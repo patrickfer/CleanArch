@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Domain.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository :IRepository<Product>
     {
-        Task<IEnumerable<Product>> GetProducts();
-        Task<Product> GetById(int? id);
-        Task<IEnumerable<Product>> GetProductCategoryAsync(int? id);
-        Task<Product> Create(Product product);
-        Task<Product> Update(Product product);
-        Task<Product> Delete(Product product);
+        Task<IEnumerable<Product>> GetProductsByCategoryAsync(int? id);
     }
 }
