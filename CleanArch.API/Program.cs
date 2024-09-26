@@ -30,16 +30,6 @@ app.UseHttpsRedirection();
 app.UseStatusCodePages();
 app.UseRouting();
 
-using (var serviceScope = app.Services.CreateScope())
-{
-    var services = serviceScope.ServiceProvider;
-
-    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
-
-    seedUserRoleInitial.SeedRoles();
-    seedUserRoleInitial.SeedUsers();
-}
-
 app.UseAuthentication();
 app.UseAuthorization();
 
