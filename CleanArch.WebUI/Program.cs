@@ -23,16 +23,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-using (var serviceScope = app.Services.CreateScope())
-{
-    var services = serviceScope.ServiceProvider;
-
-    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
-
-    seedUserRoleInitial.SeedRoles();
-    seedUserRoleInitial.SeedUsers();
-}
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

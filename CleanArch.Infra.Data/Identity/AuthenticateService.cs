@@ -20,47 +20,29 @@ namespace CleanArch.Infra.Data.Identity
         }
         public async Task<bool> Authenticate(string email, string password)
         {
-            try
-            {
-                var result = await _signInManager.PasswordSignInAsync(email,
-                password, false, lockoutOnFailure: false);
+            var result = await _signInManager.PasswordSignInAsync(email,
+            password, false, lockoutOnFailure: false);
 
-                return result.Succeeded;
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException(ex.Message);
-            }
+            return result.Succeeded;
         }
 
         public async Task<bool> RegisterUser(string email, string password)
         {
-            try
+            var applicationUser = new ApplicationUser
             {
-                var applicationUser = new ApplicationUser
-                {
-                    UserName = email,
-                    Email = email
-                };
+                UserName = email,
+                Email = email
+            };
 
-                var result = await _userManager.CreateAsync(applicationUser, password);
+            var result = await _userManager.CreateAsync(applicationUser, password);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(applicationUser, isPersistent: false);
-                }
-
-                else
-                {
-                    throw new InvalidOperationException(result.Errors.ToString());
-                }
-
-                return result.Succeeded;
-            }
-            catch(Exception ex) 
+            if (result.Succeeded)
             {
-               throw new InvalidOperationException($"An error occurred while register: {ex}");
+                await _signInManager.SignInAsync(applicationUser, isPersistent: false);
             }
+
+            return result.Succeeded;
+
         }
 
         public async Task Logout()
