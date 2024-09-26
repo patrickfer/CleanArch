@@ -46,20 +46,6 @@ namespace CleanArch.Application.Services
             return _mapper.Map<ProductDTO>(result);
         }
 
-        public async Task<IEnumerable<ProductDTO>> GetProductsByCategory(int? categoryId)
-        {
-            var productsByCategoryIdQuery = new GetProductsByCategoryQuery(categoryId.Value);
-
-            if (productsByCategoryIdQuery is null)
-            {
-                throw new Exception($"Entity could not be loaded");
-            }
-
-            var result = await _mediator.Send(productsByCategoryIdQuery);
-
-            return _mapper.Map<IEnumerable<ProductDTO>>(result);
-        }
-
         public async Task Add(ProductDTO productDto)
         {
            var productCreateCommand = _mapper.Map<ProductCreateCommand>(productDto);

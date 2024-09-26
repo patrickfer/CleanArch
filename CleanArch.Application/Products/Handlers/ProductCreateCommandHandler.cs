@@ -12,9 +12,9 @@ namespace CleanArch.Application.Products.Handlers
 {
     public class ProductCreateCommandHandler : IRequestHandler<ProductCreateCommand, Product> 
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IRepository<Product> _productRepository;
 
-        public ProductCreateCommandHandler(IProductRepository productRepository)
+        public ProductCreateCommandHandler(IRepository<Product> productRepository)
         {
             _productRepository = productRepository ?? throw new
                    ArgumentNullException(nameof(productRepository));

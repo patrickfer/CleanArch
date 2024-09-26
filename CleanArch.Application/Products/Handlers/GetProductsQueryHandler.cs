@@ -7,8 +7,8 @@ namespace CleanArch.Application.Products.Handlers
 {
     public class GetProductsQueryHandler : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
     {
-        private readonly IProductRepository _productRepository;
-        public GetProductsQueryHandler(IProductRepository productRepository) 
+        private readonly IRepository<Product> _productRepository;
+        public GetProductsQueryHandler(IRepository<Product> productRepository) 
         {
             _productRepository = productRepository ?? throw new
                   ArgumentNullException(nameof(productRepository));

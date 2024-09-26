@@ -12,9 +12,9 @@ namespace CleanArch.Application.Products.Handlers
 {
     public class ProductRemoveCommandHandler : IRequestHandler<ProductRemoveCommand, Product>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IRepository<Product> _productRepository;
 
-        public ProductRemoveCommandHandler(IProductRepository productRepository)
+        public ProductRemoveCommandHandler(IRepository<Product> productRepository)
         {
             _productRepository = productRepository ?? throw new
                    ArgumentNullException(nameof(productRepository));
