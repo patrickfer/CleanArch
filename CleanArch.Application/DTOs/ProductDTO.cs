@@ -23,7 +23,7 @@ namespace CleanArch.Application.DTOs
         [Required(ErrorMessage = "The Price is Required")]
         [Column(TypeName = "decimal(18,2)")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        [DisplayName("Description")]
+        [DisplayName("Price")]
         public decimal Price { get; set; }
 
         [Required(ErrorMessage = "The Stock is required")]
@@ -35,7 +35,7 @@ namespace CleanArch.Application.DTOs
         [DisplayName("Product Image")]
         public string Image { get; set; }
 
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         [DisplayName("Categories")]
         public int CategoryId { get; set; }
     }
