@@ -26,7 +26,7 @@ This project follows **Clean Architecture** principles to develop a modular, sca
    Handles dependency injection, managing the registration of services and their lifetimes across the application.
 
 7. **CleanArch.WEBUI**:  
-   The user interface layer, providing frontend interaction, potentially using MVC or Razor Pages in **ASP.NET Core**.
+   The user interface layer, providing frontend interaction, potentially using MVC and Razor Pages in **ASP.NET Core**.
 
 ## Key Features
 
